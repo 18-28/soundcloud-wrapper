@@ -30,7 +30,7 @@ type TrackData = {
 type CommentData = {
   comment: {
     body: string
-    timestamp: string
+    timestamp: number
   }
 }
 

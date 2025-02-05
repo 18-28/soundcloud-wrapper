@@ -9,7 +9,7 @@ declare module "soundcloud-wrapper" {
       getTrackLikers(authToken: string, trackId: number): Promise<any>
       getTrackReposters(authToken: string, trackId: number): Promise<any>
       getRelatedTracks(authToken: string, trackId: number): Promise<any>
-      addComment(authToken: string, trackId: number, comment: { comment: { body: string; timestamp: string } }): Promise<any>
+      addComment(authToken: string, trackId: number, comment: { comment: { body: string; timestamp: number } }): Promise<any>
       updateTrack(authToken: string, trackId: number, data: any): Promise<any>
       deleteTrack(authToken: string, trackId: number): Promise<any>
     }
