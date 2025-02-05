@@ -1,6 +1,6 @@
 # Soundcloud Wrapper ☁️
 
-Soundcloud Wrapper is a fully open source, lightweight, strongly-typed Node.js wrapper for the Soundcloud Wrapper. It simplifies interaction with SoundCloud's services by providing an intuitive interface for authentication, track management, playlist operations, and user interactions. Built with TypeScript, it offers full type safety and seamless integration for Node.js applications.
+Soundcloud Wrapper is a fully open source, lightweight, strongly-typed Node.js wrapper for the Soundcloud API. It simplifies interaction with SoundCloud's services by providing an intuitive interface for authentication, track management, playlist operations, and user interactions. Built with TypeScript, it offers full type safety and seamless integration for Node.js applications.
 
 # Docs
 
