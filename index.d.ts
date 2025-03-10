@@ -21,6 +21,15 @@ export default class SoundCloudClient {
     users(authToken: string, query: string): Promise<Types.User[]>
   }
 
+  playlists: {
+    getPlaylist(authToken: string, playlistId: number): Promise<Types.Playlist>
+    getPlaylistTracks(authToken: string, playlistId: number): Promise<Types.Track[]>
+    getPlaylistReposters(authToken: string, playlistId: number): Promise<Types.Users>
+    createPlaylist(authToken: string, playlistData: Types.PlaylistData): Promise<Types.Playlist>
+    updatePlaylist(authToken: string, playlistId: number, playlistData: Types.PlaylistData): Promise<Types.Playlist>
+    deletePlaylist(authToken: string, playlistId: number): Promise<{ status: string }>
+  }
+
   tracks: {
     getTrack(authToken: string, trackId: number): Promise<any>
     getTrackStreams(authToken: string, trackId: number): Promise<any>
@@ -31,15 +40,6 @@ export default class SoundCloudClient {
     addComment(authToken: string, trackId: number, comment: { comment: { body: string; timestamp: number } }): Promise<any>
     updateTrack(authToken: string, trackId: number, data: any): Promise<any>
     deleteTrack(authToken: string, trackId: number): Promise<any>
-  }
-
-  playlists: {
-    getPlaylist(authToken: string, playlistId: number): Promise<any>
-    getPlaylistTracks(authToken: string, playlistId: number): Promise<any>
-    getPlaylistReposters(authToken: string, playlistId: number): Promise<any>
-    createPlaylist(authToken: string, playlistData: PlaylistData): Promise<any>
-    updatePlaylist(authToken: string, playlistId: number, playlistData: PlaylistData): Promise<any>
-    deletePlaylist(authToken: string, playlistId: number): Promise<any>
   }
 
   likes: {
@@ -66,16 +66,5 @@ export default class SoundCloudClient {
 
   misc: {
     resolveUrl(authToken: string, url: string): Promise<any>
-  }
-}
-
-interface PlaylistData {
-  playlist: {
-    title: string
-    description: string
-    sharing: string
-    tracks: {
-      id: number
-    }[]
   }
 }

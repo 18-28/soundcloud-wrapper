@@ -203,3 +203,14 @@ export interface Playlists {
   collection: Playlist[]
   next_href: string
 }
+// Used to create a new playlist
+interface PlaylistData {
+  playlist: {
+    title: string
+    description: string
+    sharing: string
+    tracks: {
+      id: number
+    }[]
+  }
+}
