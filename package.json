@@ -1,12 +1,13 @@
 {
   "name": "soundcloud-wrapper",
-  "version": "0.9.7",
+  "version": "0.9.9",
   "description": "Node wrapper for the SoundCloud API",
   "main": "dist/index.js",
   "types": "index.d.ts",
   "files": [
     "dist",
-    "index.d.ts"
+    "index.d.ts",
+    "types.d.ts"
   ],
   "repository": "https://github.com/18-28/soundcloud-wrapper",
   "homepage": "https://soundcloud-wrapper-docs.vercel.app/docs",

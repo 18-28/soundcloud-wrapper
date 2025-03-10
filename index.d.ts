@@ -1,5 +1,4 @@
 import * as Types from "./types"
-export * as Types from "./types"
 
 export default class SoundCloudClient {
   constructor(clientId: string, clientSecret: string, redirectUri: string, PKCECodeVerifier: string)
