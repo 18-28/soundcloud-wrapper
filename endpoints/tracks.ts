@@ -40,7 +40,7 @@ export class Tracks extends SoundCloudClient {
   }
 
   // updates a specific track
-  public async updateTrack(authToken: string, trackId: number, data: Types.UpdateTrackData): Promise<Types.Track> {
+  public async updateTrack(authToken: string, trackId: number, data: Types.TrackData): Promise<Types.Track> {
     return this.updateTrackRequest(authToken, trackId, data)
   }
 
@@ -109,7 +109,7 @@ export class Tracks extends SoundCloudClient {
     }
   }
 
-  private async updateTrackRequest(authToken: string, trackId: number, trackData: Types.UpdateTrackData): Promise<Types.Track> {
+  private async updateTrackRequest(authToken: string, trackId: number, trackData: Types.TrackData): Promise<Types.Track> {
     try {
       const config = {
         method: "PUT",
