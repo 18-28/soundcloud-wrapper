@@ -159,6 +159,27 @@ export interface Tracks {
   next_href: string
 }
 
+export interface UpdateTrackData {
+  track: {
+    title: string
+    permalink: string
+    sharing: "public" | "private"
+    embeddable_by: "all" | "me" | "none"
+    purchase_url: string
+    description: string
+    genre: string
+    tag_list: string
+    label_name: string
+    release: string
+    release_date: string
+    streamable: boolean
+    downloadable: boolean
+    license: "no-rights-reserved" | "all-rights-reserved" | "cc-by" | "cc-by-nc" | "cc-by-nd" | "cc-by-sa" | "cc-by-nc-nd" | "cc-by-nc-sa"
+    commentable: boolean
+    isrc: string
+  }
+}
+
 export interface Playlist {
   duration: number
   genre: string
@@ -213,4 +234,35 @@ interface PlaylistData {
       id: number
     }[]
   }
+}
+
+export interface Comment {
+  kind: string
+  id: number
+  body: string
+  created_at: string
+  timestamp: number
+  track_id: number
+  user_id: number
+  user: User
+  uri: string
+}
+
+export interface Comments {
+  collection: Comment[]
+  next_href: string
+}
+
+export interface CommentData {
+  comment: {
+    body: string
+    timestamp: number
+  }
+}
+
+export interface Streams {
+  http_mp3_128_url: string
+  hls_mp3_128_url: string
+  hls_opus_64_url: string
+  preview_mp3_128_url: string
 }

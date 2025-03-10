@@ -31,15 +31,15 @@ export default class SoundCloudClient {
   }
 
   tracks: {
-    getTrack(authToken: string, trackId: number): Promise<any>
-    getTrackStreams(authToken: string, trackId: number): Promise<any>
-    getTrackComments(authToken: string, trackId: number): Promise<any>
-    getTrackLikers(authToken: string, trackId: number): Promise<any>
-    getTrackReposters(authToken: string, trackId: number): Promise<any>
-    getRelatedTracks(authToken: string, trackId: number): Promise<any>
-    addComment(authToken: string, trackId: number, comment: { comment: { body: string; timestamp: number } }): Promise<any>
-    updateTrack(authToken: string, trackId: number, data: any): Promise<any>
-    deleteTrack(authToken: string, trackId: number): Promise<any>
+    getTrack(authToken: string, trackId: number): Promise<Types.Track>
+    getTrackStreams(authToken: string, trackId: number): Promise<Types.Streams>
+    getTrackComments(authToken: string, trackId: number): Promise<Types.Comment[]>
+    getTrackLikers(authToken: string, trackId: number): Promise<Types.User[]>
+    getTrackReposters(authToken: string, trackId: number): Promise<Types.Users>
+    getRelatedTracks(authToken: string, trackId: number): Promise<Types.Track[]>
+    addComment(authToken: string, trackId: number, comment: { comment: { body: string; timestamp: number } }): Promise<Types.Comment>
+    updateTrack(authToken: string, trackId: number, data: Types.UpdateTrackData): Promise<Types.Track>
+    deleteTrack(authToken: string, trackId: number): Promise<string>
   }
 
   likes: {
