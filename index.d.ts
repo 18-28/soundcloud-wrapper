@@ -42,22 +42,22 @@ export default class SoundCloudClient {
     deleteTrack(authToken: string, trackId: number): Promise<string>
   }
 
+  users: {
+    getUser(authToken: string, userId: number): Promise<Types.User>
+    getUserFollowers(authToken: string, userId: number): Promise<Types.Users>
+    getUserFollowings(authToken: string, userId: number): Promise<Types.Users>
+    getUserPlaylists(authToken: string, userId: number): Promise<Types.Playlist[]>
+    getUserTracks(authToken: string, userId: number): Promise<Types.Track[]>
+    getUserWebProfiles(authToken: string, userId: number): Promise<Types.WebProfile[]>
+    getUserLikedTracks(authToken: string, userId: number): Promise<Types.Track[]>
+    getUserLikedPlaylists(authToken: string, userId: number): Promise<Types.Playlist[]>
+  }
+
   likes: {
     likeTrack(authToken: string, trackId: number): Promise<any>
     likePlaylist(authToken: string, playlistId: number): Promise<any>
     unlikeTrack(authToken: string, trackId: number): Promise<any>
     unlikePlaylist(authToken: string, playlistId: number): Promise<any>
-  }
-
-  users: {
-    getUser(authToken: string, userId: number): Promise<any>
-    getUserFollowers(authToken: string, userId: number): Promise<any>
-    getUserFollowings(authToken: string, userId: number): Promise<any>
-    getUserPlaylists(authToken: string, userId: number): Promise<any>
-    getUserTracks(authToken: string, userId: number): Promise<any>
-    getUserWebProfiles(authToken: string, userId: number): Promise<any>
-    getUserLikedTracks(authToken: string, userId: number): Promise<any>
-    getUserLikedPlaylists(authToken: string, userId: number): Promise<any>
   }
 
   token: {

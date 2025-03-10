@@ -266,3 +266,13 @@ export interface Streams {
   hls_opus_64_url: string
   preview_mp3_128_url: string
 }
+
+export interface WebProfile {
+  created_at: string
+  id: number
+  kind: "web-profile"
+  service: string
+  title: string
+  url: string
+  username: string
+}
