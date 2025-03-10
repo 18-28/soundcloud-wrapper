@@ -159,7 +159,7 @@ export interface Tracks {
   next_href: string
 }
 
-export interface UpdateTrackData {
+export interface TrackData {
   track: {
     title: string
     permalink: string

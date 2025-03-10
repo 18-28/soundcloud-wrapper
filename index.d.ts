@@ -38,7 +38,7 @@ export default class SoundCloudClient {
     getTrackReposters(authToken: string, trackId: number): Promise<Types.Users>
     getRelatedTracks(authToken: string, trackId: number): Promise<Types.Track[]>
     addComment(authToken: string, trackId: number, comment: { comment: { body: string; timestamp: number } }): Promise<Types.Comment>
-    updateTrack(authToken: string, trackId: number, data: Types.UpdateTrackData): Promise<Types.Track>
+    updateTrack(authToken: string, trackId: number, data: Types.TrackData): Promise<Types.Track>
     deleteTrack(authToken: string, trackId: number): Promise<string>
   }
 
