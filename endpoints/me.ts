@@ -1,55 +1,56 @@
 import SoundCloudClient from "../client"
 import axios from "axios"
+import * as Types from "../types"
 
 export class Me extends SoundCloudClient {
   // Returns authenticated users info
-  public async me(authToken: string) {
+  public async me(authToken: string): Promise<Types.Me> {
     return this.getRequest(authToken, "/me")
   }
 
   // Returns authenticated users activity
-  public async getActivity(authToken: string) {
+  public async getActivity(authToken: string): Promise<Types.Activities> {
     return this.getRequest(authToken, "/me/activities")
   }
 
   // Returns authenticated users track activity
-  public async getTrackActivity(authToken: string) {
+  public async getTrackActivity(authToken: string): Promise<Types.Activities> {
     return this.getRequest(authToken, "/me/activities/tracks")
   }
 
   // Returns authenticated users track likes activity
-  public async getTrackLikes(authToken: string) {
+  public async getTrackLikes(authToken: string): Promise<Types.Track[]> {
     return this.getRequest(authToken, "/me/likes/tracks")
   }
 
   // Returns authenticated users playlist likes activity
-  public async getPlaylistLikes(authToken: string) {
+  public async getPlaylistLikes(authToken: string): Promise<Types.Playlist[]> {
     return this.getRequest(authToken, "/me/likes/playlists")
   }
 
   // Returns people authenticated user is following
-  public async getFollowings(authToken: string) {
+  public async getFollowings(authToken: string): Promise<Types.Users> {
     return this.getRequest(authToken, "/me/followings")
   }
 
   // Returns peoples tracks authenticated user is following
-  public async getFollowingsTracks(authToken: string) {
+  public async getFollowingsTracks(authToken: string): Promise<Types.Track[]> {
     return this.getRequest(authToken, "/me/followings/tracks")
   }
 
   // Follows the specified user
-  public async followUser(authToken: string, userId: number) {
+  public async followUser(authToken: string, userId: number): Promise<{ status: string }> {
     return this.followRequest(authToken, "/me/followings", userId)
   }
 
   // Unfollows the specified user
-  public async unfollowUser(authToken: string, userId: number) {
+  public async unfollowUser(authToken: string, userId: number): Promise<{ status: string }> {
     return this.unfollowRequest(authToken, "/me/followings", userId)
   }
 
   // TODO: bind authToken to object so it does not need to be passed everytime
   // --- REQUESTS ---
-  private async getRequest(authToken: string, endpoint: string) {
+  private async getRequest(authToken: string, endpoint: string): Promise<any> {
     try {
       const config = {
         method: "GET",
@@ -78,7 +79,7 @@ export class Me extends SoundCloudClient {
     }
   }
 
-  private async followRequest(authToken: string, endpoint: string, userId: number) {
+  private async followRequest(authToken: string, endpoint: string, userId: number): Promise<{ status: string }> {
     try {
       const config = {
         method: "PUT",
@@ -110,7 +111,7 @@ export class Me extends SoundCloudClient {
     }
   }
 
-  private async unfollowRequest(authToken: string, endpoint: string, userId: number) {
+  private async unfollowRequest(authToken: string, endpoint: string, userId: number): Promise<{ status: string }> {
     try {
       const config = {
         method: "DELETE",

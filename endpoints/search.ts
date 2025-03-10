@@ -1,25 +1,26 @@
 import SoundCloudClient from "../client"
 import axios from "axios"
+import * as Types from "../types"
 
 // TODO: full query support
 export class Search extends SoundCloudClient {
   // searches for tracks
-  public async tracks(authToken: string, query: string) {
+  public async tracks(authToken: string, query: string): Promise<Types.Track[]> {
     return this.searchRequest(authToken, `/tracks?q=${query}`)
   }
 
   // searches for playlists
-  public async playlists(authToken: string, query: string) {
+  public async playlists(authToken: string, query: string): Promise<Types.Playlist[]> {
     return this.searchRequest(authToken, `/playlists?q=${query}`)
   }
 
   // searches for users
-  public async users(authToken: string, query: string) {
+  public async users(authToken: string, query: string): Promise<Types.User[]> {
     return this.searchRequest(authToken, `/users?q=${query}`)
   }
 
   // --- REQUESTS ---
-  private async searchRequest(authToken: string, endpoint: string) {
+  private async searchRequest(authToken: string, endpoint: string): Promise<any> {
     try {
       const config = {
         method: "GET",

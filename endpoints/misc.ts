@@ -1,13 +1,14 @@
 import SoundCloudClient from "../client"
 import axios from "axios"
+import * as Types from "../types"
 
 export class Misc extends SoundCloudClient {
-  public async resolveUrl(authToken: string, url: string) {
+  public async resolveUrl(authToken: string, url: string): Promise<any> {
     return this.resolveRequest(authToken, url)
   }
 
   // --- REQUESTS ---
-  private async resolveRequest(authToken: string, url: string) {
+  private async resolveRequest(authToken: string, url: string): Promise<any> {
     try {
       const config = {
         method: "GET",

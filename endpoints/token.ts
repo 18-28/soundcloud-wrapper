@@ -1,15 +1,23 @@
 import SoundCloudClient from "../client"
 import axios from "axios"
 import qs from "qs"
+import * as Types from "../types"
 
+// TODO: add types
 export class Token extends SoundCloudClient {
   // Returns access token for logged in user
-  public async getToken(PKCECodeChallenge: string) {
+  public async getToken(PKCECodeChallenge: string): Promise<Types.AuthToken> {
     return this.getAccessToken(this.clientId, this.clientSecret, this.redirectUri, this.PKCECodeVerifier, PKCECodeChallenge)
   }
 
   // --- REQUESTS ---
-  private async getAccessToken(clientId: string, clientSecret: string, redirectUri: string, PKCECodeVerifier: string, PKCECodeChallenge: string) {
+  private async getAccessToken(
+    clientId: string,
+    clientSecret: string,
+    redirectUri: string,
+    PKCECodeVerifier: string,
+    PKCECodeChallenge: string
+  ): Promise<Types.AuthToken> {
     const data = qs.stringify({
       grant_type: "authorization_code",
       client_id: clientId,

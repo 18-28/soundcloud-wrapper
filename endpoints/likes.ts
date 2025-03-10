@@ -1,29 +1,30 @@
 import SoundCloudClient from "../client"
 import axios from "axios"
+import * as Types from "../types"
 
 export class Likes extends SoundCloudClient {
   // likes a specific track
-  public async likeTrack(authToken: string, trackId: number) {
+  public async likeTrack(authToken: string, trackId: number): Promise<{ status: string }> {
     return this.likeRequest(authToken, "/tracks", trackId)
   }
 
   // likes a specific playlist
-  public async likePlaylist(authToken: string, playlistId: number) {
+  public async likePlaylist(authToken: string, playlistId: number): Promise<{ status: string }> {
     return this.likeRequest(authToken, "/playlists", playlistId)
   }
 
   // unlikes a specific track
-  public async unlikeTrack(authToken: string, trackId: number) {
+  public async unlikeTrack(authToken: string, trackId: number): Promise<{ status: string }> {
     return this.unlikeRequest(authToken, "/tracks", trackId)
   }
 
   // unlikes a specific playlist
-  public async unlikePlaylist(authToken: string, playlistId: number) {
+  public async unlikePlaylist(authToken: string, playlistId: number): Promise<{ status: string }> {
     return this.unlikeRequest(authToken, "/playlists", playlistId)
   }
 
   // --- REQUESTS ---
-  private async likeRequest(authToken: string, endpoint: string, id: number) {
+  private async likeRequest(authToken: string, endpoint: string, id: number): Promise<{ status: string }> {
     try {
       const config = {
         method: "POST",
@@ -52,7 +53,7 @@ export class Likes extends SoundCloudClient {
     }
   }
 
-  private async unlikeRequest(authToken: string, endpoint: string, id: number) {
+  private async unlikeRequest(authToken: string, endpoint: string, id: number): Promise<{ status: string }> {
     try {
       const config = {
         method: "DELETE",

@@ -1,50 +1,40 @@
 import axios from "axios"
 import SoundCloudClient from "../client"
-
-type PlaylistData = {
-  playlist: {
-    title: string
-    description: string
-    sharing: string
-    tracks: {
-      id: number
-    }[]
-  }
-}
+import * as Types from "../types"
 
 export class Playlist extends SoundCloudClient {
   // gets a specific playlist
-  public async getPlaylist(authToken: string, playlistId: number) {
+  public async getPlaylist(authToken: string, playlistId: number): Promise<Types.Playlist> {
     return this.getPlaylistRequest(authToken, "", playlistId)
   }
 
   // gets the tracks of a specific playlist
-  public async getPlaylistTracks(authToken: string, playlistId: number) {
+  public async getPlaylistTracks(authToken: string, playlistId: number): Promise<Types.Track[]> {
     return this.getPlaylistRequest(authToken, "/tracks", playlistId)
   }
 
   // gets the reposters of a specific playlist
-  public async getPlaylistReposters(authToken: string, playlistId: number) {
+  public async getPlaylistReposters(authToken: string, playlistId: number): Promise<Types.Users> {
     return this.getPlaylistRequest(authToken, "/reposters", playlistId)
   }
 
   // creates a new playlist
-  public async createPlaylist(authToken: string, playlistData: PlaylistData) {
+  public async createPlaylist(authToken: string, playlistData: Types.PlaylistData): Promise<Types.Playlist> {
     return this.createPlaylistRequest(authToken, playlistData)
   }
 
   // updates a specific playlist
-  public async updatePlaylist(authToken: string, playlistId: number, playlistData: PlaylistData) {
+  public async updatePlaylist(authToken: string, playlistId: number, playlistData: Types.PlaylistData): Promise<Types.Playlist> {
     return this.updatePlaylistRequest(authToken, playlistId, playlistData)
   }
 
   // deletes a specific playlist
-  public async deletePlaylist(authToken: string, playlistId: number) {
+  public async deletePlaylist(authToken: string, playlistId: number): Promise<{ status: string }> {
     return this.deletePlaylistRequest(authToken, playlistId)
   }
 
   // --- REQUESTS ---
-  private async getPlaylistRequest(authToken: string, endpoint: string, playlistId: number) {
+  private async getPlaylistRequest(authToken: string, endpoint: string, playlistId: number): Promise<any> {
     try {
       const config = {
         method: "GET",
@@ -63,7 +53,7 @@ export class Playlist extends SoundCloudClient {
     }
   }
 
-  private async createPlaylistRequest(authToken: string, playlistData: PlaylistData) {
+  private async createPlaylistRequest(authToken: string, playlistData: Types.PlaylistData): Promise<Types.Playlist> {
     try {
       const config = {
         method: "POST",
@@ -84,7 +74,7 @@ export class Playlist extends SoundCloudClient {
     }
   }
 
-  private async updatePlaylistRequest(authToken: string, playlistId: number, playlistData: PlaylistData) {
+  private async updatePlaylistRequest(authToken: string, playlistId: number, playlistData: Types.PlaylistData): Promise<Types.Playlist> {
     try {
       const config = {
         method: "PUT",
@@ -105,7 +95,7 @@ export class Playlist extends SoundCloudClient {
     }
   }
 
-  private async deletePlaylistRequest(authToken: string, playlistId: number) {
+  private async deletePlaylistRequest(authToken: string, playlistId: number): Promise<{ status: string }> {
     try {
       const config = {
         method: "DELETE",
