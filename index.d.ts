@@ -54,14 +54,21 @@ export default class SoundCloudClient {
   }
 
   likes: {
-    likeTrack(authToken: string, trackId: number): Promise<any>
-    likePlaylist(authToken: string, playlistId: number): Promise<any>
-    unlikeTrack(authToken: string, trackId: number): Promise<any>
-    unlikePlaylist(authToken: string, playlistId: number): Promise<any>
+    likeTrack(authToken: string, trackId: number): Promise<{ status: string }>
+    likePlaylist(authToken: string, playlistId: number): Promise<{ status: string }>
+    unlikeTrack(authToken: string, trackId: number): Promise<{ status: string }>
+    unlikePlaylist(authToken: string, playlistId: number): Promise<{ status: string }>
+  }
+
+  reposts: {
+    repostTrack(authToken: string, trackId: number): Promise<string>
+    removeRepostTrack(authToken: string, trackId: number): Promise<string>
+    repostPlaylist(authToken: string, playlistId: number): Promise<string>
+    removeRepostPlaylist(authToken: string, playlistId: number): Promise<string>
   }
 
   token: {
-    getToken(PKCECodeChallenge: string): Promise<any>
+    getToken(PKCECodeChallenge: string): Promise<Types.AuthToken>
   }
 
   misc: {
